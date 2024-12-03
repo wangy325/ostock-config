@@ -41,11 +41,11 @@ management:
     web:
       base-path: /
       exposure:
-        include: *
+        include: '*'
     enabled-by-default: true
     jmx:
       exposure:
-        include: *
+        include: '*'
   endpoint:
     health:
       enabled: true
