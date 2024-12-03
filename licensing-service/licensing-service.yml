@@ -1,0 +1,57 @@
+example:
+  property: I AM THE DEFAULT
+  
+  # 应用服务 WEB 访问端口
+server:
+  port: 8080
+  
+  # jpa
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    database: POSTGRESQL
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  database:
+    driver-class-name: org.postgresql.Driver
+  datasource:
+    platform: postgres
+    testWhileIdle: true
+    validationQuery: SELECT 1
+
+# eureka client
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    registry-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eurekaserver:8070/eureka
+
+
+management:
+  server:
+    port: 8081
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: *
+    enabled-by-default: true
+    jmx:
+      exposure:
+        include: *
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+  health:
+    db:
+      enabled: false
+    diskspace:
+      enabled: false
