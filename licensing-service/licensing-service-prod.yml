@@ -4,6 +4,6 @@ example:
   # DataSource settings: set here your own configurations for the database
 spring:
   datasource:
-    url: jdbc:postgresql://database:5432/ostock_prod
+    url: 'jdbc:postgresql://database:5432/ostock_prod'
     username: postgres
-    password: {cipher}5be256ab9368e6a53777ae7503a863e01a6999251f6ed475742c5c4c1fb55297
+    password: '{cipher}5be256ab9368e6a53777ae7503a863e01a6999251f6ed475742c5c4c1fb55297'
