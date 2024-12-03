@@ -26,7 +26,7 @@ spring:
 # eureka client
 eureka:
   instance:
-    prefer-ip-address: true
+    preferIpAddress: true
   client:
     registry-with-eureka: true
     fetch-registry: true
