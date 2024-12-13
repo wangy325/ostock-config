@@ -20,3 +20,24 @@ spring:
         discovery.locator:
             enabled: true
             lowerCaseServiceId: true
+
+# management
+management:
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: '*'
+    enabled-by-default: true
+    jmx:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+  health:
+    db:
+      enabled: false
+    diskspace:
+      enabled: false
