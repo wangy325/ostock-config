@@ -1,0 +1,22 @@
+server:
+  port: 8072
+
+# eureka client
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registry-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eurekaserver:8070/eureka
+    
+
+# gateway
+
+spring:
+  cloud:
+    gateway:
+        discovery.locator:
+            enabled: true
+            lowerCaseServiceId: true

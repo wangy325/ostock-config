@@ -55,3 +55,57 @@ management:
       enabled: false
     diskspace:
       enabled: false
+
+# circuitbreaker
+resilience4j:
+    circuitbreaker:
+        instances:
+            licenseService:
+                register-health-indicator: true
+                failure-rate-threshold: 10
+                slow-call-rate-threshold: 90
+                slow-call-duration-threshold: 10s
+                permitted-number-of-calls-in-half-open-state: 10
+                sliding-window-size: 10
+                sliding-window-type: COUNT_BASED
+                minimum-number-of-calls: 10
+                wait-duration-in-open-state:  10s
+                record-exceptions:
+                    - org.springframework.web.client.HttpServerErrorException
+                    - org.springframework.web.client.ResourceAccessException
+                    - java.io.IOException
+                    - java.util.concurrent.TimeoutException
+# bulkhead
+    bulkhead:
+        instances:
+            bulkheadLicenseService:
+                max-concurrent-calls: 10
+                max-wai-duration: 500ms
+    thread-pool-bulkhead:
+        instances:
+            bulkheadLicenseService:
+                core-thread-pool-size: 10
+                max-thread-pool-size: 15
+                queue-capacity: 1
+                keep-alive-duration: 20ms
+# ratelimiter
+    ratelimiter:
+        instances:
+            reatelimiterLicenseService:
+                limit-for-period: 5
+                limit-refresh-period: 5000ms
+                timeout-duration: 100ms
+# retry
+    retry:
+        instances:
+            retryLicenseService:
+                max-attempts: 3
+                wait-duration: 100ms
+                retry-exceptions:
+                    - java.util.concurrent.TimeoutException
+
+logging:
+    level:
+        com.netflix: WARN
+        org.springframework.web: WARN
+        com.learn: DEBUG
