@@ -25,7 +25,6 @@ spring:
 management:
   endpoints:
     web:
-      base-path: /
       exposure:
         include: '*'
     enabled-by-default: true

@@ -35,11 +35,8 @@ eureka:
 
 
 management:
-  server:
-    port: 8081
   endpoints:
     web:
-      base-path: /
       exposure:
         include: '*'
     enabled-by-default: true
