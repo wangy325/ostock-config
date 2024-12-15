@@ -53,3 +53,10 @@ management:
       enabled: false
     diskspace:
       enabled: false
+    
+
+logging:
+    level:
+        com.netflix: WARN
+        org.springframework.web: WARN
+        com.learn: DEBUG
