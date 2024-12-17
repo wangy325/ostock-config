@@ -3,7 +3,7 @@ example:
   
   # 应用服务 WEB 访问端口
 server:
-  port: 8082
+  port: 8090
   
   # jpa
 spring:
