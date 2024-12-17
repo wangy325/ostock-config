@@ -33,7 +33,18 @@ spring:
             - Path=/license/**
           filters:
             - RewritePath=/license/(?<path>.*), /$\{path}
-
+    loadbalancer:
+      health-check: 
+        initial-delay: 1s
+        interval: 30s
+      cache:
+        caffine:
+          spec: initialCapacity=10, maximumSize=50
+        ttl: 30
+      stats: 
+        micrometer: 
+          enabled: true
+          
 # management
 management:
   endpoints:

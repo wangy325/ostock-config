@@ -22,6 +22,19 @@ spring:
     platform: postgres
     testWhileIdle: true
     validationQuery: SELECT 1
+  # loadbalancer
+  cloud:
+    loadbalancer:
+      health-check:
+        initial-delay: 1s
+        interval: 30s
+      cache:
+        caffeine:
+          spec: initialCapacity=10, maximumSize=50
+        ttl: 30
+      stats:
+        micrometer:
+          enabled: true
 
 # eureka client
 eureka:
@@ -101,6 +114,17 @@ resilience4j:
                 retry-exceptions:
                     - java.util.concurrent.TimeoutException
 
+# feign
+feign:
+client:
+  config:
+    organization-service:
+      connectTimeout: 5000
+      readTimeout: 5000
+      loggerLevel: full
+      requestInterceptors:
+        - com.learn.license.utils.UserContextInterceptor
+      decode404: false
 logging:
     level:
         com.netflix: WARN

@@ -22,7 +22,17 @@ spring:
     platform: postgres
     testWhileIdle: true
     validationQuery: SELECT 1
-
+  loadbalancer:
+    health-check: 
+      initial-delay: 1s
+      interval: 30s
+    cache:
+      caffine:
+        spec: initialCapacity=10, maximumSize=50
+      ttl: 30
+    stats: 
+      micrometer: 
+        enabled: true
 # eureka client
 eureka:
   instance:
