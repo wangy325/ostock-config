@@ -12,18 +12,19 @@ eureka:
   server:
     waitTimeInMsWhenSynEmpty: 5
 
-cloud:
-  loadbalancer:
-    health-check: 
-      initial-delay: 1s
-      interval: 30s
-    cache:
-      caffine:
-        spec: initialCapacity=10, maximumSize=50
-      ttl: 30
-    stats: 
-      micrometer: 
-        enabled: true
+spring: 
+  cloud:
+    loadbalancer:
+      health-check: 
+        initial-delay: 1s
+        interval: 30s
+      cache:
+        caffine:
+          spec: initialCapacity=10, maximumSize=50
+        ttl: 30
+      stats: 
+        micrometer: 
+          enabled: true
 
 management:
   endpoints:
