@@ -116,15 +116,15 @@ resilience4j:
 
 # feign
 feign:
-client:
-  config:
-    organization-service:
-      connectTimeout: 5000
-      readTimeout: 5000
-      loggerLevel: full
-      requestInterceptors:
-        - com.learn.license.utils.UserContextInterceptor
-      decode404: false
+  client:
+    config:
+      organization-service:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
+        requestInterceptors:
+          - com.learn.license.utils.UserContextInterceptor
+        decode404: false
 logging:
     level:
         com.netflix: WARN
