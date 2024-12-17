@@ -11,3 +11,35 @@ eureka:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
   server:
     waitTimeInMsWhenSynEmpty: 5
+
+cloud:
+  loadbalancer:
+    health-check: 
+      initial-delay: 1s
+      interval: 30s
+    cache:
+      caffine:
+        spec: initialCapacity=10, maximumSize=50
+      ttl: 30
+    stats: 
+      micrometer: 
+        enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    enabled-by-default: true
+    jmx:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+  health:
+    db:
+      enabled: false
+    diskspace:
+      enabled: false
