@@ -33,6 +33,12 @@ spring:
             - Path=/license/**
           filters:
             - RewritePath=/license/(?<path>.*), /$\{path}
+        - id: facade
+          uri: lb://facade
+          predicates:
+            - Path=/facade/**
+          filters:
+            - RewritePath=/facade/(?<path>.*), /$\{path}
     loadbalancer:
       health-check: 
         initial-delay: 1s
@@ -40,7 +46,7 @@ spring:
       cache:
         caffine:
           spec: initialCapacity=10, maximumSize=50
-        ttl: 30
+        ttl: 30s
       stats: 
         micrometer: 
           enabled: true

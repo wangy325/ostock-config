@@ -29,7 +29,7 @@ spring:
     cache:
       caffine:
         spec: initialCapacity=10, maximumSize=50
-      ttl: 30
+      ttl: 30s
     stats: 
       micrometer: 
         enabled: true
