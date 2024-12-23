@@ -44,7 +44,7 @@ spring:
         initial-delay: 1s
         interval: 30s
       cache:
-        caffine:
+        caffeine:
           spec: initialCapacity=10, maximumSize=50
         ttl: 30s
       stats: 
