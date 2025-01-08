@@ -27,18 +27,21 @@ spring:
             - Path=/organization/**
           filters:
             - RewritePath=/organization/(?<path>.*), /$\{path}
+            - RemoveRequestHeader=Cookie, Set-Cookie
         - id: licensing-service
           uri: lb://licensing-service
           predicates:
             - Path=/license/**
           filters:
             - RewritePath=/license/(?<path>.*), /$\{path}
+            - RemoveRequestHeader=Cookie, Set-Cookie
         - id: facade
           uri: lb://facade
           predicates:
             - Path=/facade/**
           filters:
             - RewritePath=/facade/(?<path>.*), /$\{path}
+            - RemoveRequestHeader=Cookie, Set-Cookie
     loadbalancer:
       health-check: 
         initial-delay: 1s
